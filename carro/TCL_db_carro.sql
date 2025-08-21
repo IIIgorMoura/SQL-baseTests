@@ -28,3 +28,14 @@ SELECT * FROM tb_carro;
 ALTER TABLE tb_historico MODIFY id_historico INT AUTO_INCREMENT;
 UPDATE tb_carro SET valor = 90 WHERE id_carro = 43454;
 
+
+ALTER TABLE tb_proprietario
+ADD data_nascimento DATE;
+SELECT * FROM tb_proprietario;
+
+SELECT * FROM tb_proprietario;
+INSERT INTO tb_proprietario
+VALUES (7, 'Marcelito Aguiar', 43454, null,  '2000/01/01');
+
+UPDATE tb_proprietario SET data_nascimento = '1950/01/01' WHERE id_proprietario = 6;
+
