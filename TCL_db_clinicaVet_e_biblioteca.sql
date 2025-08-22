@@ -83,3 +83,37 @@ END
 
 
 -- 4
+SELECT * FROM tb_membros;
+INSERT INTO tb_membros VALUES (
+	6,
+    'Juan',
+    null
+);
+/*
+CREATE DEFINER=`root`@`localhost` TRIGGER `TR_dataAdesao_auto` BEFORE INSERT ON `tb_membros` FOR EACH ROW BEGIN
+	SET NEW.data_adesao = NOW();
+END
+*/
+
+-- 5
+SELECT * FROM tb_autores;
+INSERT INTO tb_autores VALUES (
+	7,
+    'Alexandro Moretto',
+    '2000-01-01'
+);
+
+/*
+CREATE DEFINER=`root`@`localhost` TRIGGER `TR_autores_dupp` BEFORE INSERT ON `tb_autores` FOR EACH ROW BEGIN
+    DECLARE autor_existente INT;
+
+    SELECT COUNT(*) INTO autor_existente
+    FROM tb_autores
+    WHERE nome = NEW.nome;
+
+    IF autor_existente > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Não é permitido ter autores com nomes idênticos';
+    END IF;
+END
+*/
