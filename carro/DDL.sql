@@ -32,7 +32,7 @@ SELECT marca, modelo FROM tb_carro;
 ALTER TABLE tb_proprietario ADD idade INT(3);
 /* Alterar tipo ou qnt de caracs alocados */
 ALTER TABLE tb_proprietario CHANGE nome product_full_name VARCHAR(255);
-ALTER TABLE tb_proprietario RENAME COLUMN nome TO name;
+ALTER TABLE tb_proprietario RENAME COLUMN name TO nome;
 
 SELECT * FROM tb_proprietario;
 
