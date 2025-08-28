@@ -21,12 +21,12 @@ INSERT INTO tb_disciplinas (nome, curso_id, professor_id) VALUES
 ('Gestão Empresarial', 4, 4),
 ('História da Arte', 5, 5);
 
-INSERT INTO tb_estudantes (nome, data_nascimento, email) VALUES
-('Lucas Silva', '2001-05-14', 'lucas.silva@email.com'),
-('Juliana Souza', '2000-11-22', 'juliana.souza@email.com'),
-('Matheus Rocha', '1999-08-03', 'matheus.rocha@email.com'),
-('Amanda Torres', '2002-02-28', 'amanda.torres@email.com'),
-('Felipe Costa', '2001-12-10', 'felipe.costa@email.com');
+INSERT INTO tb_estudantes (nome, data_nascimento, email, data_matricula, curso_id) VALUES
+('Lucas Silva', '2001-05-14', 'lucas.silva@email.com', '2025-01-10', 1),
+('Juliana Souza', '2000-11-22', 'juliana.souza@email.com', '2025-01-12', 2),
+('Matheus Rocha', '1999-08-03', 'matheus.rocha@email.com', '2025-01-15', 3),
+('Amanda Torres', '2002-02-28', 'amanda.torres@email.com', '2025-01-20', 4),
+('Felipe Costa', '2001-12-10', 'felipe.costa@email.com', '2025-01-22', 5);
 
 INSERT INTO tb_matriculas (data_matricula, estudante_id, disciplina_id) VALUES
 ('2025-01-10', 1, 1),

@@ -38,7 +38,10 @@ CREATE TABLE tb_estudantes (
 	id_estudante INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT NULL,
     nome VARCHAR(100) NOT NULL,
     data_nascimento DATE,
-    email VARCHAR(100) UNIQUE NOT NULL
+    email VARCHAR(100) UNIQUE NOT NULL,
+    data_matricula DATE NOT NULL,
+    curso_id INT NOT NULL,
+    FOREIGN KEY (curso_id) REFERENCES tb_cursos(id_curso)
 );
 SELECT * FROM tb_estudantes;
 
