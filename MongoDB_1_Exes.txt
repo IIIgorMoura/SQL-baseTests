@@ -1,0 +1,55 @@
+Exercício MongoDB 1 - por: Igor Moura
+
+// No DB
+mongod --port 27017 --dbpath .\01
+
+// No SH
+mongosh --port 27017
+
+
+
+// 1
+use favoritos
+
+db.createCollection('filmes')
+
+
+
+// 2
+db.favoritos.insertOne({{titulo: "Inception", ano: 2010, genero: ["Ação", "Ficção Científica"], atores: [{ nome: "Leonardo DiCaprio", personagem: "Cobb" }, { nome: "Joseph Gordon-Levitt", personagem: "Arthur" }], avaliacao: 8.8, disponivelStreaming: true}})
+
+
+
+// 3
+db.favoritos.insertOne({titulo: "Inception", ano: 2010, genero: ["Ação", "Ficção Científica"], atores: [{ nome: "Leonardo DiCaprio", personagem: "Cobb" }, { nome: "Joseph Gordon-Levitt", personagem: "Arthur" }], avaliacao: 8.8, disponivelStreaming: true}){acknowledged: true, insertedId: ObjectId('68b8bdcdf6affe199973518a')}
+
+db.favoritos.insertOne({titulo: "The Matrix", ano: 1999, genero: ["Ação", "Ficção Científica"], atores: [{ nome: "Keanu Reeves", personagem: "Neo" }, { nome: "Laurence Fishburne", personagem: "Morpheus" }], avaliacao: 8.7, disponivelStreaming: true})
+
+db.favoritos.insertOne({titulo: "O Senhor dos Anéis: A Sociedade do Anel", ano: 2001, genero: ["Aventura", "Fantasia"], atores: [{ nome: "Elijah Wood", personagem: "Frodo" }, { nome: "Ian McKellen", personagem: "Gandalf" }], avaliacao: 8.8, disponivelStreaming: false})
+
+
+
+// 4
+db.favoritos.find({ avaliacao: { $gt: 8 } })
+
+db.favoritos.find({ titulo: { $regex: /^T/i } })
+
+db.favoritos.find({ genero: "Drama" })
+
+db.favoritos.find({ atores: { $exists: true } })
+
+db.favoritos.find({"atores.personagem": "Cobb", avaliacao: { $gt: 8 }})
+
+
+
+// 5
+db.favoritos.updateOne({ titulo: "Inception" }, { $inc: { avaliacao: 0.2 } })
+
+db.favoritos.updateOne({ titulo: "The Matrix" }, { $set: { disponivelStreaming: false } })
+
+db.favoritos.updateOne({ titulo: "Inception" }, { $push: { atores: { nome: "Tom Hardy", personagem: "Eames" } } })
+
+
+
+// 6
+db.favoritos.aggregate([{ $match: { ano: { $lt: 2000 } } }, { $count: "totalFilmesAntesDe2000" }])
