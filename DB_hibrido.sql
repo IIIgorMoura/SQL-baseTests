@@ -29,7 +29,24 @@ WHERE JSON_EXTRACT(preferencias, '$.notificacoes') = true;
 
 SELECT nome, JSON_EXTRACT(preferencias, '$.interesses[0]') AS interesse1
 FROM tb_clientes;
+SELECT nome, preferencias->'$.interesses[0]' AS interesse1
+FROM tb_clientes;
 
 SELECT nome, JSON_KEYS(preferencias) FROM tb_clientes;
 SELECT JSON_TYPE(preferencias->'$.interesses') FROM tb_clientes;
 SELECT JSON_TYPE(preferencias->'$.interesses[0]') FROM tb_clientes;
+
+UPDATE tb_clientes 
+SET preferencias = JSON_INSERT(preferencias, '$.premium', true) 
+WHERE id=3;
+	-- tem os JSON_SET(-- atualiza um campo)
+		-- e JSON_REMOVE(preferencias, '$.premium') -- remove um campo do doc
+        
+SELECT nome, 
+JSON_UNQUOTE(preferencias->'$.interesses[0]') AS interesse1
+FROM tb_clientes;
+
+-- é igual a
+	-- pegar resultado, e dps dar um quote
+    -- o quote e unquote é ter "ASPAS" ou n
+
