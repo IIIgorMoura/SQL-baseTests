@@ -56,7 +56,6 @@ CREATE TABLE tb_matriculas (
 SELECT * FROM tb_matriculas;
 
 
-
 CREATE TABLE tb_notas (
 	-- anotação: UNIQUE NOT NULL é uma redundância, mas como no avião, melhor sobrar do que faltas
 	id_nota INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT NULL,
